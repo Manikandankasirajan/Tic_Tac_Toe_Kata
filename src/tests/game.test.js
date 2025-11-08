@@ -21,3 +21,12 @@ test("to return 'Moves left => X : 4, O : 3' when game in progress", () => {
 	const movesMadeByPlayers = [{ X: "A1" }, { O: "A2" }];
 	expect(game(movesMadeByPlayers)).toBe("Moves left => X : 4, O : 3");
 });
+
+test("to throw error 'Invalid Move! position already marked please try different position' when player try to mark already marked position", () => {
+	const movesMadeByPlayers = [{ X: "A1" }, { O: "A2" }, { X: "A1" }];
+	expect(() => game(movesMadeByPlayers)).toThrow();
+	expect(() => game(movesMadeByPlayers)).toThrow(Error);
+	expect(() => game(movesMadeByPlayers)).toThrow(
+		"Invalid Move! position already marked, please try different position"
+	);
+});
