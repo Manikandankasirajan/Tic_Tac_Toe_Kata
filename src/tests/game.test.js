@@ -54,3 +54,26 @@ describe("test cases to validate if program can identity when players win by mar
 		expect(game(movesMadeByPlayers)).toBe("O Wins!!!");
 	});
 });
+describe("test cases to validate if program can identity when players win by marking three consecutive vertical positions", () => {
+	test("to return 'Player X Wins!!!' if position marked by X matches the win combination", () => {
+		const movesMadeByPlayers = [
+			{ X: "A1" },
+			{ O: "B2" },
+			{ X: "B1" },
+			{ O: "A3" },
+			{ X: "C1" },
+		];
+		expect(game(movesMadeByPlayers)).toBe("X Wins!!!");
+	});
+	test("to return 'Player O Wins!!!' if position marked by O matches the win combination", () => {
+		const movesMadeByPlayers = [
+			{ X: "A1" },
+			{ O: "B2" },
+			{ X: "C1" },
+			{ O: "C2" },
+			{ X: "A3" },
+			{ O: "A2" },
+		];
+		expect(game(movesMadeByPlayers)).toBe("O Wins!!!");
+	});
+});
