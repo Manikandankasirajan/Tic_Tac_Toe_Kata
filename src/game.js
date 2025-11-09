@@ -1,9 +1,10 @@
 import firstMoveCheck from "./gamePhase/firstMoveCheck";
 import gameInProgress from "./gamePhase/gameInProgress";
+import gameWon from "./gamePhase/gameWon";
 import newGame from "./gamePhase/newGame";
 
 export default function game(movesMadeByPlayers) {
-	const gamePhase = [newGame, firstMoveCheck, gameInProgress];
+	const gamePhase = [newGame, firstMoveCheck, gameInProgress, gameWon];
 	for (const phase of gamePhase) {
 		const result = phase(movesMadeByPlayers);
 		if (result) {
