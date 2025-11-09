@@ -115,3 +115,10 @@ test("to return 'Game is Draw!!!' when no player can mark any three consecutive 
 	];
 	expect(game(movesMadeByPlayers)).toBe("Game is Draw!!!");
 });
+
+test("to throw error for invalid input", () => {
+	const movesMadeByPlayers = null;
+	expect(() => game(movesMadeByPlayers)).toThrow();
+	expect(() => game(movesMadeByPlayers)).toThrow(TypeError);
+	expect(() => game(movesMadeByPlayers)).toThrow("Invalid Input Type");
+});

@@ -5,6 +5,10 @@ import gameWon from "./gamePhase/gameWon";
 import newGame from "./gamePhase/newGame";
 
 export default function game(movesMadeByPlayers) {
+	if (!Array.isArray(movesMadeByPlayers)) {
+		throw new TypeError("Invalid Input Type");
+	}
+
 	const gamePhase = [
 		newGame,
 		firstMoveCheck,
