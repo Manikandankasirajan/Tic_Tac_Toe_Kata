@@ -1,12 +1,10 @@
 import { MAX_MOVES_FOR_O, MAX_MOVES_FOR_X } from "../constants";
 import getMovesMadeByPlayer from "../utils/getMovesMadeByPlayer";
-import validateMoves from "../utils/validateMoves";
 import isWinPossible from "../utils/isWinPossible";
 import getPlayerPositions from "../utils/getPlayerPositions";
 import { WIN_COMBINATIONS } from "../constants";
 
-export default function gameInProgress(movesMadeByPlayers) {
-	validateMoves(movesMadeByPlayers);
+export default function gameDraw(movesMadeByPlayers) {
 	const xMoves = getMovesMadeByPlayer(movesMadeByPlayers, "X");
 	const oMoves = getMovesMadeByPlayer(movesMadeByPlayers, "O");
 	const xPositions = getPlayerPositions(xMoves);
@@ -17,13 +15,11 @@ export default function gameInProgress(movesMadeByPlayers) {
 
 	const oResult = WIN_COMBINATIONS.map((combination) =>
 		combination.filter((comb) => oPositions.includes(comb))
-	).filter((result) => result.length === 3);
-
-	if (xMoves.length < MAX_MOVES_FOR_X && oMoves.length < MAX_MOVES_FOR_O) {
+    ).filter((result) => result.length === 3);
+    
+	if (xMoves.length === MAX_MOVES_FOR_X && oMoves.length === MAX_MOVES_FOR_O) {
 		if (!isWinPossible(xResult, oResult)) {
-			return `Moves left => X : ${MAX_MOVES_FOR_X - xMoves.length}, O : ${
-				MAX_MOVES_FOR_O - oMoves.length
-			}`;
+			return "Game is Draw!!!";
 		}
 	}
 }

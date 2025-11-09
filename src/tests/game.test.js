@@ -100,3 +100,18 @@ describe("test cases to validate if program can identity when players win by mar
 		expect(game(movesMadeByPlayers)).toBe("O Wins!!!");
 	});
 });
+
+test("to return 'Game is Draw!!!' when no player can mark any three consecutive postion within allowed moves", () => {
+	const movesMadeByPlayers = [
+		{ X: "A1" },
+		{ O: "C1" },
+		{ X: "C3" },
+		{ O: "B2" },
+		{ X: "A3" },
+		{ O: "A2" },
+		{ X: "B1" },
+		{ O: "B3" },
+		{ X: "C2" },
+	];
+	expect(game(movesMadeByPlayers)).toBe("Game is Draw!!!");
+});
