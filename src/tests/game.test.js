@@ -27,7 +27,7 @@ test("to throw error 'Invalid Move! position already marked please try different
 	expect(() => game(movesMadeByPlayers)).toThrow();
 	expect(() => game(movesMadeByPlayers)).toThrow(Error);
 	expect(() => game(movesMadeByPlayers)).toThrow(
-		"Invalid Move! position already marked, please try different position"
+		"Invalid Move! position A1 already marked, please try different position"
 	);
 });
 
